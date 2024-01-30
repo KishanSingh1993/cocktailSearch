@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/searchFragment">
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="in.eduforyou.cocktailsearch.views.fragments.SearchFragment"
+        android:label="search_fragment"
+        tools:layout="@layout/search_fragment" >
+        <action
+            android:id="@+id/action_view_main"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="in.eduforyou.cocktailsearch.views.fragments.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" >
+        <argument
+            android:name="searchQuery"
+            app:argType="string"
+            android:defaultValue="None" />
+
+        <action
+            android:id="@+id/action_view_cocktail"
+            app:destination="@id/viewFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewFragment"
+        android:name="in.eduforyou.cocktailsearch.views.fragments.ViewFragment"
+        android:label="view_fragment"
+        tools:layout="@layout/view_fragment" >
+        <argument
+            android:name="cocktailId"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="cocktailName"
+            app:argType="string"
+            android:defaultValue="None" />
+        <argument
+            android:name="cocktailInstructions"
+            app:argType="string"
+            android:defaultValue="None" />
+        <argument
+            android:name="cocktailImage"
+            app:argType="string"
+            android:defaultValue="None" />
+        <argument
+            android:name="fragmentname"
+            app:argType="string"
+            android:defaultValue="None" />
+        <action
+            android:id="@+id/action_viewFragment_to_ingredientsFragment"
+            app:destination="@id/ingredientsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="in.eduforyou.cocktailsearch.views.fragments.FavouritesFragment"
+        android:label="favourites_fragment"
+        tools:layout="@layout/favourites_fragment">
+
+        <action
+            android:id="@+id/action_view_cocktail"
+            app:destination="@id/viewFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/ingredientsFragment"
+        android:name="in.eduforyou.cocktailsearch.views.fragments.IngredientsFragment"
+        android:label="ingredients_fragment"
+        tools:layout="@layout/ingredients_fragment" >
+        <argument
+            android:name="ingredientName"
+            app:argType="string" />
+        <argument
+            android:name="ingredientDescription"
+            app:argType="string" />
+    </fragment>
+
+
+</navigation>
